@@ -49,3 +49,9 @@ alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config curr
 alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 ```
 
+## Kubectl starting notes
+
+```
+kubectl get componentstatuses <span style="color:green">get a simple diagnostic for the cluster</span>. 
+
+
