@@ -2,7 +2,7 @@
 
 ## Kubectl autocomplete
 
-```
+```python
 source <(kubectl completion bash) # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
 echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
 ```
@@ -11,7 +11,8 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permane
 
 Set which Kubernetes cluster kubectl communicates with and modifies configuration information.
 
-```kubectl config view # Show Merged kubeconfig settings.
+```python 
+kubectl config view # Show Merged kubeconfig settings.
 
 # use multiple kubeconfig files at the same time and view merged config
 KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
@@ -49,9 +50,18 @@ alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config curr
 alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 ```
 
-## Kubectl starting notes
+## Kubectl personal notes
+
+```python
+kubectl get componentstatuses #get a simple diagnostic for the cluster. 
+kubectl get nodes               # list all the nodes in the cluster.
+kubectl describe nodes <nodename from get nodes command>  #get more information about a specific node
+kubectl get daemonSets --namespace=kube-system kube-proxy #see the proxies
+kubectl get services --namespace=kube-system # list some services
+kubectl get deployments --namespace=kube-system # list some deployment
+kubectl config set-context my-context --namespace=mystuff # set default name space added into ~/.kub/config
+kubectl config use-context my-context  # To use this newly created context
 
 ```
-kubectl get componentstatuses <span style="color:green">get a simple diagnostic for the cluster</span>. 
 
 
